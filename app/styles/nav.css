@@ -1,0 +1,11 @@
+.navbar-right {
+  padding-right: 30px;
+}
+
+.navbar-right .form-control {
+  width: 345px;
+}
+
+.navbar-nav > li > a {
+  cursor: pointer;
+}
