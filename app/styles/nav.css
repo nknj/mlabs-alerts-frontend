@@ -6,6 +6,12 @@
   width: 345px;
 }
 
+@media (max-width: 768px) {
+  .navbar-right .form-control {
+    width: 100%;
+  }
+}
+
 .navbar-nav > li > a {
   cursor: pointer;
 }
