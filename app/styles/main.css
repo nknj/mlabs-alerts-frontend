@@ -8,9 +8,17 @@ html, body {
   height: auto !important;
   height: 100%;
   margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 .articleError {
   margin-top: 50px;
+}
+
+.btn-primary {
+  background-color: #a3b1bb;
+  border: 0px;
+}
+
+.btn-primary:hover {
+  background-color: #76899a;
 }
