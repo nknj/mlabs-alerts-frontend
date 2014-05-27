@@ -1,13 +1,40 @@
 'use strict';
 
-app.controller('MainCtrl', function ($scope, $window, $sce) {
+app.controller('MainCtrl', function ($scope, $window, $sce, $routeParams, UrlUtils) {
+  /*
+  * URL Errors:
+  * 0 - No Error
+  * 1 - Invalid URL format
+  */
+
   // Set defaults
-  $scope.url = 'http://bbc.co.uk';
+  var DEFAULT_URL = 'http://bbc.co.uk';
+  $scope.urlError = 0;
+
+  // Set URL
+  var routeUrl = $routeParams.url;
+  if (!routeUrl) {
+    $scope.url = DEFAULT_URL;
+    UrlUtils.modifyUrl($scope.url);
+  } else {
+    if (UrlUtils.validateUrl(routeUrl)) {
+      $scope.url = decodeURIComponent(routeUrl);
+      UrlUtils.modifyUrl($scope.url);
+    } else {
+      $scope.urlError = 1;
+    }
+  }
   $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
 
   // Event handlers
   $scope.buttonClick = function() {
-    $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
+    $scope.urlError = 0;
+    if ($scope.url && UrlUtils.validateUrl($scope.url)) {
+      $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
+      UrlUtils.modifyUrl($scope.url);
+    } else {
+      $scope.urlError = 1;
+    }
   };
 
   // Twitter Share

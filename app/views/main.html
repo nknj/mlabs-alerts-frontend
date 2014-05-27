@@ -28,8 +28,9 @@
   </div>
 </nav>
 <!-- Header End -->
+<div class="articleError alert alert-danger" ng-show="urlError">Invalid URL</div>
 
-<div class="article">
+<div class="article" ng-hide="urlError">
   <iframe ng-src="{{trustedUrl}}"></iframe>
 </div>
 
