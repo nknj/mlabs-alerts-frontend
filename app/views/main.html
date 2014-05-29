@@ -23,24 +23,24 @@
     </div>
 
     <div class="nav-second-row">
-      <ul class="nav navbar-nav navbar-company">
+      <ul class="nav navbar-nav navbar-company text-center">
         <li><a class="logo"><img class="img-thumbnail" ng-src="{{ currentArticle.matchCompanyLogo }}" alt="Company Logo"></a></li>
-        <li><a class="name">{{ currentArticle.matchCompany }} </a></li>
+        <li><a class="name">{{ currentArticle.matchCompany }}</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right-not-xs" >
         <li class="truncate hidden-xs">
           <a ng-click="next()" ng-show="nextArticle">
-            <strong>Next Up:</strong> {{ nextArticle.title }} <i class="fa fa-chevron-circle-right"></i>
+            <strong>Next Up:</strong>&nbsp;{{ nextArticle.title }}&nbsp;<i class="fa fa-chevron-circle-right"></i>
           </a>
         </li>
         <li class="truncate-xs visible-xs">
           <a ng-click="next()" ng-show="nextArticle">
-            <strong>Next Up:</strong> {{ nextArticle.title }} <i class="fa fa-chevron-circle-right"></i>
+            <strong>Next Up:</strong>&nbsp;{{ nextArticle.title }}&nbsp;<i class="fa fa-chevron-circle-right"></i>
           </a>
         </li>
         <li ng-click="first()" class="truncate-xs text-center">
           <a ng-hide="nextArticle">
-            <strong>Done</strong> <i class="fa fa-thumbs-up"> (Back to First)</i>
+            <strong>Done</strong>&nbsp;<i class="fa fa-thumbs-up"></i>
           </a>
         </li>
       </ul>
