@@ -12,17 +12,39 @@
       <a class="navbar-brand" href="#"><img src="/images/alerts_logo_trans.png" alt="Logo"></a>
     </div>
 
-    <div class="collapse navbar-collapse" id="header-collapse">
-      <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse text-center" id="header-collapse">
+      <ul class="nav navbar-nav visible-xs">
         <li><a ng-click="facebookShare()">Share on <i class="fa fa-facebook"></i></a></li>
         <li><a ng-click="twitterShare()">Share on <i class="fa fa-twitter"></i></a></li>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="url" ng-model="url" class="form-control" placeholder="URL">
-        </div>
-        <button type="submit" ng-click="buttonClick()" class="btn btn-primary text-center">Go</button>
-      </form>
+      <ul class="nav navbar-nav pull-right-not-xs">
+        <li class="hidden-xs"><a href="{{ url }}"><i class="fa fa-times"></i></a></li>
+        <li class="visible-xs"><a href="{{ url }}"><i class="fa fa-times"></i> Remove this header</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-second-row">
+      <ul class="nav navbar-nav hidden-xs">
+        <li><a ng-click="facebookShare()">Share on <i class="fa fa-facebook"></i></a></li>
+        <li><a ng-click="twitterShare()">Share on <i class="fa fa-twitter"></i></a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right-not-xs" >
+        <li class="truncate hidden-xs">
+          <a ng-click="next()" ng-show="nextArticle">
+            <strong>Next Up:</strong> {{ nextArticle.title }} <i class="fa fa-chevron-circle-right"></i>
+          </a>
+        </li>
+        <li class="truncate-xs visible-xs">
+          <a ng-click="next()" ng-show="nextArticle">
+            <strong>Next Up:</strong> {{ nextArticle.title }} <i class="fa fa-chevron-circle-right"></i>
+          </a>
+        </li>
+        <li ng-click="first()" class="truncate-xs text-center">
+          <a ng-hide="nextArticle">
+            <strong>Done</strong> <i class="fa fa-thumbs-up"> (Back to First)</i>
+          </a>
+        </li>
+      </ul>
     </div>
 
   </div>
@@ -31,5 +53,5 @@
 <div class="articleError alert alert-danger" ng-show="urlError">Invalid URL</div>
 
 <div class="article" ng-hide="urlError">
-  <iframe ng-src="{{trustedUrl}}" frameBorder="0"></iframe>
+  <iframe ng-src="{{ trustedUrl }}" frameBorder="0"></iframe>
 </div>

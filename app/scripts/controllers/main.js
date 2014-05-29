@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function ($scope, $window, $sce, $routeParams, UrlUtils) {
+app.controller('MainCtrl', function ($scope, $window, $location, $sce, $routeParams, UrlUtils) {
   /*
   * URL Errors:
   * 0 - No Error
@@ -8,33 +8,55 @@ app.controller('MainCtrl', function ($scope, $window, $sce, $routeParams, UrlUti
   */
 
   // Set defaults
-  var DEFAULT_URL = 'http://bbc.co.uk';
   $scope.urlError = 0;
+  $scope.articleIndex = 0;
+
+  // Dummy Data
+  $scope.articles = [
+    {
+      id: 12,
+      title: 'Did ocean device capture Flight MH370\'s end?',
+      url: 'http://edition.cnn.com/2014/05/29/world/asia/mh370-sound-search/index.html?hpt=hp_c1'
+    },
+    {
+      id: 13,
+      title: 'Ukraine army helicopter shot down near Sloviansk',
+      url: 'http://www.bbc.com/news/world-europe-27618681'
+    },
+    {
+      id: 14,
+      title: 'Twitter’s ‘Zero’ Service Lets Emerging Markets Tweet For Free',
+      url: 'http://techcrunch.com/2014/05/29/twitters-emerging-market-strategy-includes-its-own-version-of-a-facebook-zero-like-service-called-twitter-access/'
+    }
+  ];
+
+  // Util Functions
+  var setUrl = function () {
+    var currentArticle = $scope.articles[$scope.articleIndex];
+    $scope.url = currentArticle.url;
+    if ($scope.url && UrlUtils.validateUrl($scope.url)) {
+      $scope.nextArticle = $scope.articles[$scope.articleIndex + 1];
+      // UrlUtils.modifyUrl(currentArticle.id);
+      $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
+    } else {
+      $scope.urlError = 1;
+    }
+  };
 
   // Set URL
-  var routeUrl = $routeParams.url;
-  if (!routeUrl) {
-    $scope.url = DEFAULT_URL;
-    UrlUtils.modifyUrl($scope.url);
-  } else {
-    if (UrlUtils.validateUrl(routeUrl)) {
-      $scope.url = decodeURIComponent(routeUrl);
-      UrlUtils.modifyUrl($scope.url);
-    } else {
-      $scope.urlError = 1;
-    }
-  }
-  $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
+  setUrl();
 
   // Event handlers
-  $scope.buttonClick = function() {
+  $scope.next = function () {
     $scope.urlError = 0;
-    if ($scope.url && UrlUtils.validateUrl($scope.url)) {
-      $scope.trustedUrl = $sce.trustAsResourceUrl($scope.url);
-      UrlUtils.modifyUrl($scope.url);
-    } else {
-      $scope.urlError = 1;
-    }
+    $scope.articleIndex ++;
+    setUrl();
+  };
+
+  $scope.first = function () {
+    $scope.urlError = 0;
+    $scope.articleIndex = 0;
+    setUrl();
   };
 
   // Twitter Share

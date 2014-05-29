@@ -2,8 +2,8 @@
 
 app.factory('UrlUtils', function ($location) {
 
-  var modifyUrl = function (url) {
-    $location.url('/?url=' + encodeURIComponent(url));
+  var modifyUrl = function (id) {
+    $location.path('/' + id);
   };
 
   var validateUrl = function (url) {
@@ -11,8 +11,8 @@ app.factory('UrlUtils', function ($location) {
   };
 
   return {
-    modifyUrl: function (url) {
-      return modifyUrl(url);
+    modifyUrl: function (id) {
+      return modifyUrl(id);
     },
     validateUrl: function (url) {
       return validateUrl(url);
