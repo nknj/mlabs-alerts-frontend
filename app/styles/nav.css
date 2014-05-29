@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #1a3b56;
+  background-color: #1A3B56;
 }
 
 .navbar-toggle .icon-bar {
@@ -17,6 +17,10 @@
   color: #a3b1bb !important;
 }
 
+.nav-second-row {
+  background-color: white;
+}
+
 .nav-second-row a {
   padding-top: 0px !important;
 }
@@ -27,6 +31,20 @@
 
 .navbar-brand img {
   margin: 11px 0px 0px 13px;
+  height: 25px;
+}
+
+.navbar-company .name {
+  /*padding-right: 5px !important;*/
+}
+
+.navbar-company .logo {
+  padding-right: 0px;
+}
+
+.navbar-company .logo img {
+  padding: 2px 4px 2px 4px;
+  margin: -4px 0px 0px 0px;
   height: 25px;
 }
 

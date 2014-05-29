@@ -1,7 +1,6 @@
 <!-- Header Start -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
-
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -13,7 +12,7 @@
     </div>
 
     <div class="collapse navbar-collapse text-center" id="header-collapse">
-      <ul class="nav navbar-nav visible-xs">
+      <ul class="nav navbar-nav">
         <li><a ng-click="facebookShare()">Share on <i class="fa fa-facebook"></i></a></li>
         <li><a ng-click="twitterShare()">Share on <i class="fa fa-twitter"></i></a></li>
       </ul>
@@ -24,9 +23,9 @@
     </div>
 
     <div class="nav-second-row">
-      <ul class="nav navbar-nav hidden-xs">
-        <li><a ng-click="facebookShare()">Share on <i class="fa fa-facebook"></i></a></li>
-        <li><a ng-click="twitterShare()">Share on <i class="fa fa-twitter"></i></a></li>
+      <ul class="nav navbar-nav navbar-company">
+        <li><a class="logo"><img class="img-thumbnail" ng-src="{{ currentArticle.matchCompanyLogo }}" alt="Company Logo"></a></li>
+        <li><a class="name">{{ currentArticle.matchCompany }} </a></li>
       </ul>
       <ul class="nav navbar-nav pull-right-not-xs" >
         <li class="truncate hidden-xs">

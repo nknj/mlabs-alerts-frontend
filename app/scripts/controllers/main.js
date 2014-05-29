@@ -16,24 +16,30 @@ app.controller('MainCtrl', function ($scope, $window, $location, $sce, $routePar
     {
       id: 12,
       title: 'Did ocean device capture Flight MH370\'s end?',
-      url: 'http://edition.cnn.com/2014/05/29/world/asia/mh370-sound-search/index.html?hpt=hp_c1'
+      url: 'http://edition.cnn.com/2014/05/29/world/asia/mh370-sound-search/index.html?hpt=hp_c1',
+      matchCompany: 'Malaysian Airlines',
+      matchCompanyLogo: '/images/malaysian_airlines.png'
     },
     {
       id: 13,
-      title: 'Ukraine army helicopter shot down near Sloviansk',
-      url: 'http://www.bbc.com/news/world-europe-27618681'
+      title: '13 things to expect from Apple at WWDC 2014',
+      url: 'http://www.theverge.com/2014/5/29/5759884/apple-wwdc-rumors-2014-what-to-expect',
+      matchCompany: 'Apple',
+      matchCompanyLogo: '/images/apple.png'
     },
     {
       id: 14,
       title: 'Twitter’s ‘Zero’ Service Lets Emerging Markets Tweet For Free',
-      url: 'http://techcrunch.com/2014/05/29/twitters-emerging-market-strategy-includes-its-own-version-of-a-facebook-zero-like-service-called-twitter-access/'
+      url: 'http://techcrunch.com/2014/05/29/twitters-emerging-market-strategy-includes-its-own-version-of-a-facebook-zero-like-service-called-twitter-access/',
+      matchCompany: 'Twitter',
+      matchCompanyLogo: '/images/twitter.png'
     }
   ];
 
   // Util Functions
   var setUrl = function () {
-    var currentArticle = $scope.articles[$scope.articleIndex];
-    $scope.url = currentArticle.url;
+    $scope.currentArticle = $scope.articles[$scope.articleIndex];
+    $scope.url = $scope.currentArticle.url;
     if ($scope.url && UrlUtils.validateUrl($scope.url)) {
       $scope.nextArticle = $scope.articles[$scope.articleIndex + 1];
       // UrlUtils.modifyUrl(currentArticle.id);
